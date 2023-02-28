@@ -25,8 +25,8 @@
 <div class="">
     <div class="d-flex justify-content-center">
 
-        <form action="{{ route('post.update', $post->id) }}" class="w-50" method="" enctype="multipart/form-data">
-            @method("PUT")
+        <form action="{{ route('post.update', $post->id) }}" class="w-50" method="POST" enctype="multipart/form-data">
+            @method('PUT')
             @csrf
 
             <label for="title">Title</label>
@@ -38,14 +38,14 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
 
-            <label for="author_id">Author</label>
+            <label for="user_id">Author</label>
 
 
-            <select name="author_id" id="author_id" class="form-control">
-                <option selected value="{{ $post->author->id }}"> {{ $post->author->name }}</option>
+            <select name="user_id" id="user_id" class="form-control">
+                <option selected value="{{ $post->user->id }}"> {{ $post->user->name }}</option>
 
-                @foreach ($authors as $author)
-                    <option value="{{ $author->id }}"> {{ $author->name }}</option>
+                @foreach ($users as $user)
+                    <option value="{{ $user->id }}"> {{ $user->name }}</option>
                 @endforeach
 
 

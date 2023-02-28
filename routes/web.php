@@ -4,6 +4,7 @@ use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,3 +55,6 @@ Route::get('/comments/edit/{comment}',    [CommentController::class, 'edit'])->n
 Route::put('/comment/update/{comment}',  [CommentController::class, 'update'])->name("comment.update");
 
 Route::delete('/comments/delete/{comment}', [CommentController::class, 'destroy'])->name("comment.delete");
+
+
+Route::resource('user', UserController::class);

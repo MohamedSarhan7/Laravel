@@ -49,8 +49,8 @@
 
             
             <select name="author_id" id="author_id" class="form-control">
-                @foreach ($authors as $author)
-                <option value="{{ $author->id }}"  > {{ $author->name }}</option>
+                @foreach ($users as $user)
+                <option value="{{ $user->id }}"  > {{ $user->name }}</option>
                 @endforeach
 
 

@@ -10,10 +10,14 @@ class Post extends Model
     use HasFactory;
     // protected $fillable = ["title", "author_id", "content"];
     protected $guarded=[];
-    public $timestamps=false;
-    public function author()
+    // public $timestamps=false;
+    public function user()
     {
-        return $this->belongsTo(UserM::class, 'author_id',"id");
+        return $this->belongsTo(User::class);
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
 

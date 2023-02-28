@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
-use App\Models\UserM;
+use App\Models\User;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 
@@ -13,8 +13,8 @@ class PostController extends Controller
     //
     function index()
     {
-        // $posts = Post::orderBy("created_at", "desc")->paginate(5)->with(['author',"author_id"]);
-        $posts = Post::with('author')->orderBy("created_at", "desc")->paginate(5);
+        $posts = Post::orderBy("created_at", "desc")->paginate(5);
+        // $posts = Post::with('author')->orderBy("created_at", "desc")->paginate(5);
         return view('post.index', compact('posts'));
     }
 
@@ -22,10 +22,10 @@ class PostController extends Controller
 
     public function create()
     {
-        $authors = UserM::all();
-        // dd($authors);
+        $users = User::all();
+        // dd($users);
 
-        return view('post.create', compact('authors'));
+        return view('post.create', compact('users'));
     }
 
 
@@ -34,7 +34,7 @@ class PostController extends Controller
         // dd($request->all());
         $validated = $request->validate([
             'title' => ['required', 'max:255'],
-            'author_id' => "required",
+            'user_id' => "required",
             'content' => 'required',
         ]);
 
@@ -48,9 +48,9 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        $authors = UserM::all();
+        $users = User::all();
 
-        return view('post.edit', compact('post','authors'));
+        return view('post.edit', compact('post','users'));
 
     }
 
@@ -58,7 +58,7 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => ['required', 'max:255'],
-            'author_id' => "required",
+            'user_id' => "required",
             'content' => 'required',
         ]);
         Post::find($post->id)->update($request->except(['_token','_method']));
@@ -71,7 +71,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         // $post = Post::w;
-        // dd($post);
+        // dd($post->comments);
         return view('post.show', ['post' => $post]);
     }
 

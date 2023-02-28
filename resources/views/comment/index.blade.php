@@ -36,7 +36,7 @@
                 <tr>
                     <td>{{ $comment->id }}</td>
                     <td>{{ $comment->post->title }}</td>
-                    <td>{{ $comment->author->name }}</td>
+                    <td>{{ $comment->user->name }}</td>
                     <td>{{ date('d-m-Y', strtotime($comment->created_at)) }}</td>
 
                     <td class="m-5">
