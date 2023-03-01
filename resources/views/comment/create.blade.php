@@ -12,7 +12,7 @@
 
 </x-layout>
 <div class="d-flex justify-content-center m-3">
-    <h1>New Post</h1>
+    <h1>New Comment</h1>
 </div>
 <div class="d-flex justify-content-start p-5">
     <a href="{{ route('comment.index') }}" class="btn btn-secondary">

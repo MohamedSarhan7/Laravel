@@ -15,7 +15,7 @@ class CommentController extends Controller
     public function index()
     {
         //
-        $comments = Comment::orderBy("created_at", "desc")->paginate(5);
+        $comments = Comment::orderBy("created_at", "desc")->with("post","user")->paginate(5);
         // $posts = Post::with('author')->orderBy("created_at", "desc")->paginate(5);
         return view('comment.index', compact('comments'));
     }
