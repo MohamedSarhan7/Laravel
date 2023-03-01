@@ -40,7 +40,7 @@ class CommentController extends Controller
     {
         //
         $validated = $request->validate([
-            'author_id' => 'required',
+            'user_id' => 'required',
             'post_id' => "required",
             'body' => ['required', 'max:255'],
         ]);
@@ -81,7 +81,7 @@ class CommentController extends Controller
         //
         $request->validate([
             'body' => ['required', 'max:255'],
-            'author_id' => "required",
+            'user_id' => "required",
             'post_id' => 'required',
         ]);
         Comment::find($comment->id)->update($request->except(['_token', '_method']));

@@ -38,16 +38,16 @@
             @method("PUT")
             @csrf
 
-            <label for="author_id">Author</label>            
-            <select name="author_id" id="author_id" class="form-control">
-            <option selected value="{{ $comment->author->id }}"> {{ $comment->author->name }}</option>
+            <label for="user_id">Author</label>            
+            <select name="user_id" id="user_id" class="form-control">
+            <option selected value="{{ $comment->user->id }}"> {{ $comment->user->name }}</option>
 
                 @foreach ($authors as $author)
                 <option value="{{ $author->id }}"  > {{ $author->name }}</option>
                 @endforeach
 
             </select>
-            @error('author_id')
+            @error('user_id')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
 

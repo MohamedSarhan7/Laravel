@@ -37,14 +37,14 @@
         <form action="{{ route('comment.store') }}" class="w-50" method="POST" enctype="multipart/form-data">
             @csrf
 
-            <label for="author_id">Author</label>            
-            <select name="author_id" id="author_id" class="form-control">
+            <label for="user_id">Author</label>            
+            <select name="user_id" id="user_id" class="form-control">
                 @foreach ($authors as $author)
                 <option value="{{ $author->id }}"  > {{ $author->name }}</option>
                 @endforeach
 
             </select>
-            @error('author_id')
+            @error('user_id')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
 
