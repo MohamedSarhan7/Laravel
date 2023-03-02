@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Exception;
 use App\Models\User;
 use App\Models\Team;
+use Illuminate\Http\RedirectResponse;
+
 
 class LoginController extends Controller
 {
@@ -16,7 +18,8 @@ class LoginController extends Controller
      */
     public function redirectToGoogle()
     {
-        return Socialite::driver('google')->redirect();
+        // return redirect()->name('test');
+        return Socialite::driver('google')->stateless()->redirect();
     }
 
     /**
@@ -24,11 +27,13 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
+   
+
     public function handleGoogleCallback()
     {
         try {
             //create a user using socialite driver google
-            $user = Socialite::driver('google')->user();
+            $user = Socialite::driver('google')->stateless()->user();
             // if the user exits, use that user and login
             $finduser = User::where('google_id', $user->id)->first();
             if($finduser){
@@ -45,19 +50,19 @@ class LoginController extends Controller
                 ]);
                 //every user needs a team for dashboard/jetstream to work.
                 //create a personal team for the user
-                $newTeam = Team::forceCreate([
-                    'user_id' => $newUser->id,
-                    'name' => explode(' ', $user->name, 2)[0]."'s Team",
-                    'personal_team' => true,
-                ]);
+                // $newTeam = Team::forceCreate([
+                //     'user_id' => $newUser->id,
+                //     'name' => explode(' ', $user->name, 2)[0]."'s Team",
+                //     'personal_team' => true,
+                // ]);
                 // save the team and add the team to the user.
-                $newTeam->save();
-                $newUser->current_team_id = $newTeam->id;
-                $newUser->save();
+                // $newTeam->save();
+                // $newUser->current_team_id = $newTeam->id;
+                // $newUser->save();
                 //login as the new user
                 Auth::login($newUser);
                 // go to the dashboard
-                return redirect('/dashboard');
+                return redirect('/posts');
             }
             //catch exceptions
         } catch (Exception $e) {

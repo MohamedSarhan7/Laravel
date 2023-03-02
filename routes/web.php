@@ -108,7 +108,5 @@ Route::resource('user', UserController::class);
 //     return redirect("/login");
 // });
 
-Route::get('auth/google', [LoginController::class, 'redirectToGoogle']);
-Route::get('auth/google/callback', [LoginController::class, 'handleGoogleCallback']);
-
-
+Route::get('auth/google', [LoginController::class, 'redirectToGoogle'])->name('auth-google');
+Route::get('auth/google/callback', [LoginController::class, 'handleGoogleCallback'])->name('test');

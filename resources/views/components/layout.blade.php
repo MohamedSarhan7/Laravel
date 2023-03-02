@@ -22,6 +22,7 @@
                     <a class="nav-link active" aria-current="page" href="{{ route('post.index') }}">All Posts</a>
                     <a class="nav-link " aria-current="page" href="{{ route('comment.index') }}">All Comments</a>
                     <a class="nav-link " aria-current="page" href="{{ route('user.index') }}">All Users</a>
+                    <a class="nav-link " aria-current="page" href="{{ route('dashboard') }}">Dashboard</a>
 
                     {{-- <a class="nav-link" href="#">Features</a> --}}
                 </div>
