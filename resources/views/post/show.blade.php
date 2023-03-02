@@ -58,8 +58,8 @@
 
 
 
-
-        <table class="table  ">
+<h2 class="text-center mt-3">Comment</h2>
+        <table class="table table-secondary ">
             <thead class="">
                 <th class="col-1">id</th>
                 <th class="col-2">Content</th>
